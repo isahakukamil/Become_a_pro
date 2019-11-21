@@ -37,7 +37,7 @@ if test -f "$file"; then
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1a.sh`" >> $logFile
 			mv $backupfile $file
 		fi
 	else
@@ -45,7 +45,7 @@ if test -f "$file"; then
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1a.sh`" >> $logFile
 			sudo mv $backupfile $file
 		fi
 	fi
@@ -74,7 +74,7 @@ if test -f "$fileNew"; then
 		echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		sudo service rsyslog restart
 	else
-		echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1.sh`" >> $logFile
+		echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1a.sh`" >> $logFile
 		sudo mv $backupfile $fileNew
 	fi
 fi
