@@ -38,20 +38,21 @@ if test -f "$file"; then
 #This tests if logfile is already created.
 	if test -f "$logFile"; then 
 		if [ "$STATUS" -eq 0 ]; then
-			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+			sudo echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
+			sudo echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			sudo mv $backupfile $file
 		fi
 	else
 		sudo touch $logFile
 		if [ "$STATUS" -eq 0 ]; then
-			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+			sudo echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
+			sudo echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			sudo mv $backupfile $file
 		fi
 	fi
+	sudo service sshd restart
 else 
 	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
