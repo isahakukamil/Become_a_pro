@@ -30,14 +30,14 @@ if test -f "$file"; then
 	echo "ClientAliveCountMax:"
 	read count
 
-	sed -i "s/.*ClientAliveInterval.*/ClientAliveInterval $interval/g" $file
-	sed -i "s/.*ClientAliveCountMax.*/#ClientAliveCountMax $count/g" $file
+	sudo sed -i 's/.*ClientAliveInterval.*/ClientAliveInterval $interval/g' $file
+	sudo sed -i 's/.*ClientAliveCountMax.*/#ClientAliveCountMax $count/g' $file
 
 	STATUS= echo "$?"
 	
 #This tests if logfile is already created.
 	if test -f "$logFile"; then 
-		if [ $STATUS -eq 0 ]; then
+		if [ "$STATUS" -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
 			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
@@ -45,7 +45,7 @@ if test -f "$file"; then
 		fi
 	else
 		sudo touch $logFile
-		if [ $STATUS -eq 0 ]; then
+		if [ "$STATUS" -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
 			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
