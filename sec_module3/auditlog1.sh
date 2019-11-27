@@ -36,7 +36,7 @@ if test -f "$file"; then
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			mv $backupfile $file
 		fi
 	else
@@ -44,10 +44,12 @@ if test -f "$file"; then
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			sudo mv $backupfile $file
 		fi
 	fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 
 #Enable remote audit logging.
@@ -72,8 +74,10 @@ if test -f "$fileNew"; then
 	if [ $STATUS -eq 0 ]; then
 		echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 	else
-		echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog1.sh`" >> $logFile
+		echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 		sudo mv $backupfile $fileNew
 	fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 	
