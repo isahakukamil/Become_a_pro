@@ -25,13 +25,13 @@ if test -f "$logFile"; then
 	if [ $STATUS -eq 0 ]; then
 		sudo echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 	else 			
-		sudo echo "$USER $timeStamp Exit_Status `./services.sh`" >> $logFile
+		sudo echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 	fi
 else
 	sudo touch $logFile
 	if [ $STATUS -eq 0 ]; then
 		sudo echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 	else
-		sudo echo "$USER $timeStamp Exit_Status: Failed to Execute: `./services.sh`" >> $logFile
+		sudo echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 	fi
 fi
