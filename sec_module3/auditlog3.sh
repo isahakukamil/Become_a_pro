@@ -33,7 +33,7 @@ if test -f "$file1"; then
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog3.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			mv $backupfile $file1
 		fi
 	else
@@ -41,10 +41,12 @@ if test -f "$file1"; then
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog3.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			sudo mv $backupfile $file1
 		fi
 	fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 
 #Change permission for file2
@@ -63,9 +65,11 @@ if test -f "$file2"; then
 	if [ $STATUS -eq 0 ]; then
 		echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 	else
-		echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog3.sh`" >> $logFile
+		echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 		mv $backupfile $file2
 	fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 
 #Change permission for file3
@@ -84,9 +88,11 @@ if test -f "$file3"; then
 	if [ $STATUS -eq 0 ]; then
 		echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 	else
-		echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog3.sh`" >> $logFile
+		echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 		mv $backupfile $file3
 	fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 
 
