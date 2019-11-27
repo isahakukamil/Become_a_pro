@@ -29,17 +29,17 @@ if test -f "$file"; then
 	STATUS=`echo "$?"`
 	if test -f "$logFile"; then
 		if [ $STATUS -eq 0 ]; then
-			echo "Successfully Executed" >>$logFile
+			echo "$USER $timeStamp Exit Status: Successfully Executed" >>$logFile
 		else
-			echo "Failed to Execute." >>$logFile
+			echo "$USER $timeStamp Exit Status: Failed to Execute." >>$logFile
 			mv $backupfile $file
 		fi
 	else
 		sudo touch $logFile
 		if [ $STATUS -eq 0 ]; then
-			echo "Successfully Executed" >>$logFile
+			echo "$USER $timeStamp Exit Status:Successfully Executed" >>$logFile
 		else
-			echo "Failed to Execute." >>$logFile
+			echo "$USER $timeStamp Exit Status:Failed to Execute." >>$logFile
 			mv $backupfile $file
 		fi
 else 
