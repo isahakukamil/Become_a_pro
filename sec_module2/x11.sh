@@ -24,7 +24,7 @@ if test -f "$file"; then
 
 	sed -i "s/.*x11Forwarding.*/x11Forwarding yes/g" $file
 
-	STATUS= echo "$?"
+	STATUS=`echo "$?"`
 	
 #This tests if logfile is already created.
 	if test -f "$logFile"; then 
