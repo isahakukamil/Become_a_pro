@@ -29,10 +29,11 @@ if test -f "$file"; then
 	if [ $STATUS -eq 0 ]; then
 		echo "Successfully Executed" >> /var/log/$logfile
 	else
-		echo "Failed to Execute: `./smtp_info.sh`" >> /var/log/$logfile
+		echo "Failed to Execute." >> /var/log/$logfile
 		mv /etc/mail/$backupfile $file
 	fi
-
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 
 
