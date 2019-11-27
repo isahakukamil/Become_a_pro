@@ -19,19 +19,30 @@ if test -f "$file"; then
 	timeStamp=$(date '+%m_%y_%H_%M_%S')
 	fExtension=".cf"
 	fExtension1=".log"
-	backFile=$timeStamp$fExtension
-	logFile=$timeStamp$fExtension1
+	backFile=/etc/mail/$timeStamp$fExtension
+	logFile=/var/log/$timeStamp$fExtension1
 
 	cp /etc/mail/sendmail.cf /etc/mail/$backFile
 	
 	sed -i '/.*SmtpGreetingMessage.*/c\SmtpGreetingMessage=$j' $file
 	
 	STATUS=`echo "$?"`
-	if [ $STATUS -eq 0 ]; then
-		echo "Successfully Executed" >> /var/log/$logFile
+	if test -f "$logFile"; then
+		if [ $STATUS -eq 0 ]; then
+			echo "Successfully Executed" >>$logFile
+		else
+			echo "Failed to Execute." >>$logFile
+			mv $backupfile $file
+		fi
 	else
-		echo "Failed to Execute: `./smtp_version.sh`" >> /var/log/$logFile
-		mv /etc/mail/$backupfile $file
-	fi
+		sudo touch $logFile
+		if [ $STATUS -eq 0 ]; then
+			echo "Successfully Executed" >>$logFile
+		else
+			echo "Failed to Execute." >>$logFile
+			mv $backupfile $file
+		fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 	
