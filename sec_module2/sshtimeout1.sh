@@ -33,7 +33,7 @@ if test -f "$file"; then
 	sudo sed -i 's/.*ClientAliveInterval.*/ClientAliveInterval $interval/g' $file
 	sudo sed -i 's/.*ClientAliveCountMax.*/#ClientAliveCountMax $count/g' $file
 
-	STATUS= echo "$?"
+	STATUS=`echo "$?"`
 	
 #This tests if logfile is already created.
 	if test -f "$logFile"; then 
