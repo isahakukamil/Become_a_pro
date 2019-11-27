@@ -26,14 +26,14 @@ if test -f "$file"; then
 	sudo cp $file $backupFile
 
 	echo "FAILLOG_ENAB yes" >> $file
-	STATUS= echo "$?"
+	STATUS=`echo "$?"`
 
 #This tests if logfile is already created.
 	if test -f "$logFile"; then 
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog2.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			mv $backupfile $file
 		fi
 	else
@@ -41,10 +41,12 @@ if test -f "$file"; then
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 		else
-			echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog2.sh`" >> $logFile
+			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			sudo mv $backupfile $file
 		fi
 	fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 
 
@@ -68,9 +70,11 @@ if test -f "$fileNew"; then
 	if [ $STATUS -eq 0 ]; then
 		echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
 	else 
-		echo "$USER $timeStamp Exit_Status: Failed to Execute: `./auditlog2.sh`" >> $logFile
+		echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 		sudo mv $backupfile $fileNew
 	fi
+else 
+	echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 fi
 
 #The following verifies that the rules have been loaded
