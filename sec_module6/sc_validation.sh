@@ -59,8 +59,5 @@ sc_validation () {
 
 sc_validation
 
-  
-#BELOW IS FOR USE IF TIMESTAMP HAS TO BE IMPLEMENTED AS FILENAME.
-#currentDate=$(date '+%m_%y_%H_%M_%S')
 
 
