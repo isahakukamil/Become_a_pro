@@ -7,55 +7,57 @@
 #---SCRIPT BY REUBEN A BOAKYE
 #SIGNUM: EBOAREU---
 
-#---PRINT PRESENT WORKING DIRECTORY---
-pwd 
 
 #---CHECK IF GNOME-SCREENSHOT PACKAGE IS INSTALLED---
-#---THIS IS PACKAGE NEEDED FOR THE SCREENSHOT TO BE TAKEN---
-filename="gnome-screenshot" 
-if rpm -qa | grep -i $filename
-then
-	echo "`tput bold`Package is already installed"
-else 
-	echo "`tput bold`Package not installed. Proceeding to install..."	
-	sudo yum -y install $filename
-fi    
+#---THIS IS THE PACKAGE NEEDED FOR THE SCREENSHOT TO BE TAKEN---
 
-#---/VAR/LOG FILES---
+sc_validation () {
+	filename="gnome-screenshot" 
+	if rpm -qa | grep -i $filename
+	then
+		echo "`tput bold`Package is already installed"
+	else 
+		echo "`tput bold`Package not installed. Proceeding to install..."	
+		sudo yum -y install $filename
+	fi    
 
-ls -l /var/log/secure
-ls -l /var/log/audit/audit.log
-ls -l /var/log/messages
-ls -l /var/log/lastlog
-ls -l /var/run/faillock
+	#---/VAR/LOG FILES---
 
-echo "Please enter file name"
-read name
-imgExtension=".png"
-imgName=$name$imgExtension
-#imgDirectory="/Pictures/"
-#imgSavePath=$imgDirectory$imgName
-gnome-screenshot -w --file="$imgName"
+	ls -l /var/log/secure
+	ls -l /var/log/audit/audit.log
+	ls -l /var/log/messages
+	ls -l /var/log/lastlog
+	ls -l /var/run/faillock
 
-#---CAT AND MORE---
+	echo "Please enter file name"
+	read name
+	imgExtension=".png"
+	imgName=$name$imgExtension
+	#imgDirectory="/Pictures/"
+	#imgSavePath=$imgDirectory$imgName
+	gnome-screenshot -w --file="$imgName"
 
-cat /etc/ssh/sshd_config | grep -i PermitRootLogin
-crontab -l
-more /etc/issue
-more /etc/motd
-more /etc/ftpd/banner.msg
-cat /etc/sudoers
-cat /etc/group
-cat /etc/passwd
+	#---CAT AND MORE---
 
-echo "Please enter new file name"
-read name
-imgExtension=".png"
-imgName=$name$imgExtension
-#imgDirectory="/Pictures/"
-#imgSavePath=$imgDirectory$imgName
-gnome-screenshot -w --file="$imgName"
+	cat /etc/ssh/sshd_config | grep -i PermitRootLogin
+	crontab -l
+	more /etc/issue
+	more /etc/motd
+	more /etc/ftpd/banner.msg
+	cat /etc/sudoers
+	cat /etc/group
+	cat /etc/passwd
 
+	echo "Please enter new file name"
+	read name
+	imgExtension=".png"
+	imgName=$name$imgExtension
+	#imgDirectory="/Pictures/"
+	#imgSavePath=$imgDirectory$imgName
+	gnome-screenshot -w --file="$imgName"
+}
+
+sc_validation
 
   
 #BELOW IS FOR USE IF TIMESTAMP HAS TO BE IMPLEMENTED AS FILENAME.
