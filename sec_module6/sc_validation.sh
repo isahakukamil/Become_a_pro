@@ -33,8 +33,6 @@ sc_validation () {
 	read name
 	imgExtension=".png"
 	imgName=$name$imgExtension
-	#imgDirectory="/Pictures/"
-	#imgSavePath=$imgDirectory$imgName
 	gnome-screenshot -w --file="$imgName"
 
 	#---CAT AND MORE---
@@ -52,8 +50,6 @@ sc_validation () {
 	read name
 	imgExtension=".png"
 	imgName=$name$imgExtension
-	#imgDirectory="/Pictures/"
-	#imgSavePath=$imgDirectory$imgName
 	gnome-screenshot -w --file="$imgName"
 }
 
