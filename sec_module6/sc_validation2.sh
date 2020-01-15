@@ -2,10 +2,10 @@
 
 #---MOP WORK PACKAGE TAG: WP053V3---
 #---DESC:
-#THIS SCRIPT PROVIDES SCREENSHOT FOR SECURITY CONTROL VALIDATION---
+#---THIS SCRIPT PROVIDES SCREENSHOT FOR SECURITY CONTROL VALIDATION---
 
-#---SCRIPT BY REUBEN A BOAKYE
-#SIGNUM: EBOAREU---
+#---SCRIPT BY REUBEN A BOAKYE---
+#---SIGNUM: EBOAREU---
    
 
 #---CHECK IF GNOME-SCREENSHOT PACKAGE IS INSTALLED---
@@ -28,8 +28,6 @@ sc_validation2 () {
 	name=$(date '+%m_%y_%H_%M_%S')
 	imgExtension=".png"
 	imgName=$name$imgExtension
-	#imgDirectory="/Pictures/"
-	#imgSavePath=$imgDirectory$imgName
 	gnome-screenshot -w --file="$imgName"
 
 	nano /etc/shadow
@@ -37,8 +35,6 @@ sc_validation2 () {
 	name=$(date '+%m_%y_%H_%M_%S')
 	imgExtension=".png"
 	imgName=$name$imgExtension
-	#imgDirectory="/Pictures/"
-	#imgSavePath=$imgDirectory$imgName
 	gnome-screenshot -w --file="$imgName"
 }
 
