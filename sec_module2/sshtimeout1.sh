@@ -4,8 +4,8 @@
 #---DESC:
 #---CONFIGURING SSH SESSION TIMEOUT---
 
-#---SCRIPT BY REUBEN A. BOAKYE
-#SIGNUM: EBOAREU---
+#---SCRIPT BY REUBEN A. BOAKYE---
+#---SIGNUM: EBOAREU---
 
 #---All scripts run are logged into a single log file called "script.log"
 #with file path /var/log/script.log---
