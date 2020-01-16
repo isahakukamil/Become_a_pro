@@ -20,22 +20,34 @@ smtp_info () {
 		fextension=".cf"
 		fextension1=".log"
 		backupfile=$timestamp$fextension
-		logfile=$timestamp$fextension1
+		logname="script"
+		logfile=$logname$fextension1
 
 		cp /etc/mail/sendmail.cf /etc/mail/$backupfile
 
 		sed -i '/.*O PrivacyOptions.*/c\O PrivacyOptions=goaway,restrictmailq,restrictqrun,noreceipts,restrictexpand,noetrn,nobodyreturn' $file
 
-		STATUS=`echo "$?"`
-		if [ $STATUS -eq 0 ]; then
-			echo "Successfully Executed" >> /var/log/$logfile
+		#This tests if logfile is already created.
+		if test -f "$logFile"; then 
+			if [ $STATUS -eq 0 ]; then
+				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+			else
+				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
+				mv $backupfile $file
+			fi
 		else
-			echo "Failed to Execute." >> /var/log/$logfile
-			mv /etc/mail/$backupfile $file
+			sudo touch $logFile
+			if [ $STATUS -eq 0 ]; then
+				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+			else
+				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
+				sudo mv $backupfile $file
+			fi
 		fi
 	else 
 		echo "***THE CONFIGURATION FILE DOES NOT EXIST!***"
 	fi
+
 }
 
 smtp_info
