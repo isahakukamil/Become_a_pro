@@ -19,9 +19,9 @@ smtp_info () {
 		timestamp=$(date '+%m_%y_%H_%M_%S')
 		fextension=".cf"
 		fextension1=".log"
-		backupfile=$timestamp$fextension
+		backupfile=/etc/mail/$timestamp$fextension
 		logname="script"
-		logfile=$logname$fextension1
+		logfile=/var/log/$logname$fextension1
 
 		cp /etc/mail/sendmail.cf /etc/mail/$backupfile
 
