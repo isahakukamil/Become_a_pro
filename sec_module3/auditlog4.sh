@@ -10,7 +10,7 @@
 #---All scripts run are logged into a single log file called "script.log"
 #with file path /var/log/script.log---
 
-auditlog1 () {
+auditlog4 () {
 	file=/etc/rsyslog.conf
 	fileNew=/etc/audisp/plugins.d/syslog.conf
 
@@ -83,4 +83,4 @@ auditlog1 () {
 	fi
 }
 
-auditlog1
+auditlog4
