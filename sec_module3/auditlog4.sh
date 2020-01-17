@@ -36,6 +36,7 @@ auditlog4 () {
 		if test -f "$logFile"; then 
 			if [ $STATUS -eq 0 ]; then
 				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+				sudo service rsyslog restart
 			else
 				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 				mv $backupfile $file
@@ -44,6 +45,7 @@ auditlog4 () {
 			sudo touch $logFile
 			if [ $STATUS -eq 0 ]; then
 				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+				sudo service rsyslog restart
 			else
 				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 				sudo mv $backupfile $file
