@@ -33,6 +33,7 @@ auditlog3 () {
 		if test -f "$logFile"; then 
 			if [ $STATUS -eq 0 ]; then
 				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+				sudo systemctl restart auditd
 			else
 				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 				mv $backupfile $file1
@@ -41,6 +42,7 @@ auditlog3 () {
 			sudo touch $logFile
 			if [ $STATUS -eq 0 ]; then
 				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+				sudo systemctl restart auditd
 			else
 				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 				sudo mv $backupfile $file1
