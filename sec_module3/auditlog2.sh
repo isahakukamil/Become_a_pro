@@ -70,6 +70,7 @@ auditlog2 () {
 		STATUS= echo "$?"
 		if [ $STATUS -eq 0 ]; then
 			echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+			systemctl restart auditd
 		else 
 			echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 			sudo mv $backupfile $fileNew
