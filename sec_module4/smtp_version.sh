@@ -31,6 +31,7 @@ smtp_version () {
 		if test -f "$logFile"; then 
 			if [ $STATUS -eq 0 ]; then
 				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+				sudo service sendmail restart
 			else
 				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 				mv $backupfile $file
@@ -39,6 +40,7 @@ smtp_version () {
 			sudo touch $logFile
 			if [ $STATUS -eq 0 ]; then
 				echo "$USER $timeStamp Exit_Status: Successfully Executed" >> $logFile
+				sudo service sendmail restart
 			else
 				echo "$USER $timeStamp Exit_Status: Failed to Execute." >> $logFile
 				sudo mv $backupfile $file
