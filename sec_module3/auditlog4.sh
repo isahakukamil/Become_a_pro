@@ -23,7 +23,7 @@ auditlog4 () {
 		logName="script"
 		logFile=/var/log/$logName$fExtension1
 
-	#This creats a backup of the configuration file.
+	#This creates a backup of the configuration file.
 		sudo cp $file $backupFile
 
 		echo "PLEASE ENTER THE REMOTE SERVER IP:"
